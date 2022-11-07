@@ -1,26 +1,10 @@
 version: "3.7"
 
 services:
-  backend:
+  app:
     build: .
-    image: "exec.image"
-    container_name: "exec.container"
-    port: 8001:5000
+    container_name: "exec-container"
+    ports:
+      - 8001:5000
     environment:
       FLASK_DEBUG: "True"
-
-
-  proxy:
-    # Your code is here #
-
-
-  db:
-    # Your code is here #
-
-
-networks:
-  # Your code is here #
-
-
-volumes:
-  # Your code is here #

@@ -1,5 +1,5 @@
 from pathlib import Path
-from flask_mysqldb import MySQL
+# from flask_mysqldb import MySQL
 
 from flask import Flask
 from flask import flash, request, redirect, url_for, render_template
