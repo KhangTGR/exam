@@ -1,0 +1,10 @@
+CREATE DATABASE IF NOT EXISTS `exam_db`;
+
+CREATE TABLE IF NOT EXISTS `exam_table` (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  orders INT,
+  oranges INT,
+  apples INT,
+  bananas INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=INNODB;

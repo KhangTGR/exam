@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+  backend:
+    # Your code is here #
+
+
+  proxy:
+    # Your code is here #
+
+
+  db:
+    # Your code is here #
+
+
+networks:
+  # Your code is here #
+
+
+volumes:
+  # Your code is here #

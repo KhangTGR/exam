@@ -1,0 +1,5 @@
+Field-name  Data-Type   Allow-Null
+orders      int         No
+oranges		  int		      Yes
+apples		  int		      Yes
+bananas		  int		      Yes
