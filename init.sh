@@ -1,3 +1,3 @@
 #!/bin/bash
 
-# Your code is here
+docker-compose up
