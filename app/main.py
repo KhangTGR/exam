@@ -1,4 +1,5 @@
 from pathlib import Path
+from flask_mysqldb import MySQL
 
 from flask import Flask
 from flask import flash, request, redirect, url_for, render_template
@@ -6,11 +7,10 @@ from flask import flash, request, redirect, url_for, render_template
 from werkzeug.utils import secure_filename
 from datetime import datetime
 import re
-
 import os
 
-hostname = os.uname()[1]
-# hostname = 'Khang'
+# hostname = os.uname()[1]
+hostname = 'Khang'
 
 ALLOWED_EXTENSIONS = {'csv'}
 MY_SECRET_KEY = 'khangdepzai'
@@ -22,6 +22,12 @@ app = Flask(__name__)
 
 app.config['SECRET_KEY'] = MY_SECRET_KEY
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+app.config["MYSQL_HOST"] = os.environ.get("HOST")
+app.config["MYSQL_USER"] = os.environ.get("USER")
+app.config["MYSQL_PASSWORD"] = os.environ.get("PASSWORD")
+app.config["MYSQL_DB"] = os.environ.get("DATABASE")
+mysql = MySQL(app)
 
 
 def allowed_file(file_name):
@@ -73,6 +79,19 @@ def result():
         refined_line = re.sub('[^0-9,]+', '', line)
         content_mini = refined_line.split(',')
         content.append(content_mini)
+
+    for line in content:
+        order = line[0]
+        orange = line[1]
+        apple = line[2]
+        banana = line[3]
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO exam_table (orders,oranges,apples,bananas) VALUES(%s,%s,%s,%s)",
+                    (order, orange, apple, banana))
+        mysql.connection.commit()
+        cur.close()
+
+    file_open.close()
 
     return render_template('result.html', hostname=hostname, uploaded_file=uploaded_file, content=content)
 
