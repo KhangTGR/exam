@@ -2,7 +2,12 @@ version: "3.7"
 
 services:
   backend:
-    # Your code is here #
+    build: .
+    image: "exec.image"
+    container_name: "exec.container"
+    port: 8001:5000
+    environment:
+      FLASK_DEBUG: "True"
 
 
   proxy:
