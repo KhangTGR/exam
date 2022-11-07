@@ -14,7 +14,11 @@
             <th>Apples</th>
             <th>Bananas</th>
           </tr>
-          <!-- Code to render is here -->
+            {% for mini_content in content %}
+            <tr>{% for mini in mini_content %}
+            <td>{{ mini }}</td>
+            {% endfor %}</tr>
+            {% endfor %}
         </table>
       </div>
     </div>

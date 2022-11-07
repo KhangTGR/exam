@@ -5,7 +5,16 @@
   <body>
     <div style="padding: 40px 0 40px 0">
       <form enctype="multipart/form-data" action="/upload" method="POST">
-        <!-- Your code is here -->
+          <table>
+            <tr>
+              <th>Select file:</th>
+              <th>
+                <label for="myfile">Select a file:</label>
+                <input type="file" id="myfile" name="myfile">
+              </th>
+              <th><input type="submit" placeholder="Upload File"></th>
+            </tr>
+          </table>
       </form>
     </div>
     <br /><br />
