@@ -8,12 +8,15 @@ from datetime import datetime
 import re
 
 import os
+
 hostname = os.uname()[1]
 # hostname = 'Khang'
 
 ALLOWED_EXTENSIONS = {'csv'}
 MY_SECRET_KEY = 'khangdepzai'
-UPLOAD_FOLDER = '/app/uploaded/'
+
+cwd = os.getcwd()
+UPLOAD_FOLDER = cwd + '/uploaded/'
 
 app = Flask(__name__)
 
@@ -57,7 +60,7 @@ def upload():
 @app.route('/result', methods=['GET'])
 def result():
     uploaded_file = filename
-    file_dir = 'uploaded/' + uploaded_file
+    file_dir = cwd + '/uploaded/' + uploaded_file
     path = Path(file_dir)
     path.parent.mkdir(parents=True, exist_ok=True)
 
